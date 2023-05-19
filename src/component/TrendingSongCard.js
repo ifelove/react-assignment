@@ -1,29 +1,59 @@
-import React from 'react'
+import React from "react";
 //import {songs} from '../data'
-import {AiOutlinePlus} from 'react-icons/ai'
-import { GlobalContext } from './context';
+import { AiOutlinePlus } from "react-icons/ai";
+import { GlobalContext } from "./context";
+import { slice } from "lodash";
 
-export const TrendingSongCard=()=> {
-  const { songs, trendingSong,viewMore } = GlobalContext();
+export const TrendingSongCard = () => {
+  const {
+   
+    trendingSong,
+    viewMore,
+    playList,
+    setPlayList,
+    startIndex,
+    endIndex,
+
+  } = GlobalContext();
+
+
+
+  const addToPlaylist = (item) => {
+    console.log(item);
+
+    setPlayList([...playList, item]);
+  
+  };
+/**
+  React.useEffect(() => {
+    console.log(playList);
+  }, [playList]);
+ */
   return (
     <div className="trending-song">
-      <h2>Trending Songs</h2>
+      <h2 className="heading">Trending Songs</h2>
       <section>
-        {trendingSong.map((song) => {
+        {slice(trendingSong, startIndex, endIndex).map((song) => {
           const { id, title, artist } = song;
           return (
             <main key={id} className="song-list">
-              <div>
-                {title} by {artist}
+              <div className="song">
+                <span className="song-title"> {title} </span>
+                by <span className="song-artist">{artist}</span>
               </div>
-              <span className="icon">
+              <span className="icon" onClick={() => addToPlaylist(song)}>
                 <AiOutlinePlus />
               </span>
             </main>
           );
         })}
       </section>
-      <button className="btn" onClick={viewMore}>View More</button>
+      <button
+        className="btn"
+        onClick={viewMore}
+      >
+        View more
+      </button>
     </div>
   );
-}
+};
