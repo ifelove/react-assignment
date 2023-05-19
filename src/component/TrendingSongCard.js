@@ -1,12 +1,10 @@
 import React from "react";
-//import {songs} from '../data'
 import { AiOutlinePlus } from "react-icons/ai";
 import { GlobalContext } from "./context";
 import { slice } from "lodash";
 
 export const TrendingSongCard = () => {
   const {
-   
     trendingSong,
     viewMore,
     playList,
