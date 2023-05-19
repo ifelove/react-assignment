@@ -15,9 +15,7 @@ export const TrendingSongCard = () => {
     endIndex,
 
   } = GlobalContext();
-
-
-
+  //adding song to the playlist
   const addToPlaylist = (item) => {
     console.log(item);
 
