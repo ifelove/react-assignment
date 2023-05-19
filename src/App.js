@@ -1,5 +1,5 @@
 import Navbar from "./component/Navbar";
-import TrendingSongCard from "./component/TrendingSongCard";
+import {TrendingSongCard} from "./component/TrendingSongCard";
 import "./App.css";
 
 function App() {
